@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgendaContatos.Repositorio.Models
+namespace AgendaContatos.Dominio.Models
 {
     public class Tipo
     {
@@ -16,5 +16,6 @@ namespace AgendaContatos.Repositorio.Models
         public virtual IEnumerable<Endereco> EnderecosLogradouro { get; set; }
         public virtual IEnumerable<Endereco> Enderecos { get; set; }
         public virtual IEnumerable<Email> Emails { get; set; }
+        public virtual ICollection<Contato> Contatos { get; set; }
     }
 }

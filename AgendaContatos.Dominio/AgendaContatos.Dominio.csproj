@@ -7,8 +7,8 @@
     <ProjectGuid>{76EAB662-BC23-4B37-B03C-EA4FA596BC35}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AgendaContatos.Repositorio</RootNamespace>
-    <AssemblyName>AgendaContatos.Repositorio</AssemblyName>
+    <RootNamespace>AgendaContatos.Dominio</RootNamespace>
+    <AssemblyName>AgendaContatos.Dominio</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,22 +49,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\CampoApplication.cs" />
+    <Compile Include="Applications\ContatoApplication.cs" />
+    <Compile Include="Applications\TabelaApplication.cs" />
+    <Compile Include="Interfaces\IApplication.cs" />
+    <Compile Include="Migrations\201908271728573_TipoLogradouroRemovido.cs" />
+    <Compile Include="Migrations\201908271728573_TipoLogradouroRemovido.Designer.cs">
+      <DependentUpon>201908271728573_TipoLogradouroRemovido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908271736245_contatosTipoFkRemovida.cs" />
+    <Compile Include="Migrations\201908271736245_contatosTipoFkRemovida.Designer.cs">
+      <DependentUpon>201908271736245_contatosTipoFkRemovida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Campo.cs" />
     <Compile Include="Models\Contato.cs" />
+    <Compile Include="Models\ContatoView.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Grupo.cs" />
+    <Compile Include="Models\Tabela.cs" />
     <Compile Include="Models\Telefone.cs" />
     <Compile Include="Models\Tipo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DbContexts\AgendaContatosDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <EmbeddedResource Include="Migrations\201908271728573_TipoLogradouroRemovido.resx">
+      <DependentUpon>201908271728573_TipoLogradouroRemovido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908271736245_contatosTipoFkRemovida.resx">
+      <DependentUpon>201908271736245_contatosTipoFkRemovida.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

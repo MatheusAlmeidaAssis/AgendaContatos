@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
-namespace AgendaContatos.Repositorio.Models
+namespace AgendaContatos.Dominio.Models
 {
     public class Email
     {
         public int Id { get; set; }
+        [DisplayName("E - Mail")]
         public string Endereco { get; set; }
         public Tipo Tipo { get; set; }
         public virtual ICollection<Contato> Contatos { get; set; }

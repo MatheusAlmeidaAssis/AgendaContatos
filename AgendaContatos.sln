@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaContatos.Web", "AgendaContatos.Web\AgendaContatos.Web.csproj", "{C5646A73-CF92-412A-A997-FDDF985C1D33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaContatos.Repositorio", "AgendaContatos.Repositorio\AgendaContatos.Repositorio.csproj", "{76EAB662-BC23-4B37-B03C-EA4FA596BC35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaContatos.Dominio", "AgendaContatos.Dominio\AgendaContatos.Dominio.csproj", "{76EAB662-BC23-4B37-B03C-EA4FA596BC35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
