@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace AgendaContatos.Web
+namespace Agenda
 {
     public class BundleConfig
     {

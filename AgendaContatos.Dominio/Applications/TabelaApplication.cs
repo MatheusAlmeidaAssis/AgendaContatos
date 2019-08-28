@@ -1,17 +1,18 @@
 ﻿using AgendaContatos.Dominio.DbContexts;
 using AgendaContatos.Dominio.Interfaces;
 using AgendaContatos.Dominio.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AgendaContatos.Dominio.Applications
 {
     public class TabelaApplication : IApplication<Tabela>
     {
-        private readonly AgendaContatosDbContext _dbContext = AgendaContatosDbContext.GetDbContext;
+        private readonly AgendaContatosDbContext _dbContext;
+        public TabelaApplication()
+        {
+            _dbContext = new AgendaContatosDbContext();
+        }
         public void Excluir(int id)
         {
             var tabela = _dbContext.Tabelas.First(x => x.Id == id);
@@ -21,13 +22,14 @@ namespace AgendaContatos.Dominio.Applications
 
         public IEnumerable<Tabela> Listar(int id = 0)
         {
+            var tabelas = _dbContext.Tabelas;
             if (id > 0)
             {
-                var tabela = _dbContext.Tabelas.First(x => x.Id == id);
-                var tabelas = new List<Tabela> { tabela };
-                return tabelas;
+                var tabela = tabelas.First(x => x.Id == id);
+                var tabelasFilter = new List<Tabela> { tabela };
+                return tabelasFilter;
             }
-            return _dbContext.Tabelas;
+            return tabelas;
         }
 
         public void Salvar(Tabela entity)

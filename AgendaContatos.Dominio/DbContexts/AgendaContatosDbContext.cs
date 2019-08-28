@@ -4,10 +4,8 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace AgendaContatos.Dominio.DbContexts
 {
-    public sealed class AgendaContatosDbContext : DbContext
-    {
-        static AgendaContatosDbContext _instancia;
-        public static AgendaContatosDbContext GetDbContext => _instancia ?? (_instancia = new AgendaContatosDbContext());
+    public class AgendaContatosDbContext : DbContext
+    {             
         public DbSet<Campo> Campos { get; set; }
         public DbSet<Contato> Contatos { get; set; }
         public DbSet<Email> Emails { get; set; }
@@ -21,6 +19,7 @@ namespace AgendaContatos.Dominio.DbContexts
         {
 
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

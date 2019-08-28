@@ -9,7 +9,12 @@ namespace AgendaContatos.Dominio.Applications
 {
     public class CampoApplication : IApplication<Campo>
     {
-        private readonly AgendaContatosDbContext _dbContext = AgendaContatosDbContext.GetDbContext;
+        private readonly AgendaContatosDbContext _dbContext;
+        public CampoApplication()
+        {
+            _dbContext = new AgendaContatosDbContext();
+        }
+
         public void Excluir(int id)
         {
             var campo = _dbContext.Campos.First(x => x.Id == id);
@@ -19,13 +24,14 @@ namespace AgendaContatos.Dominio.Applications
 
         public IEnumerable<Campo> Listar(int id = 0)
         {
-            if(id > 0)
+            var campos = _dbContext.Campos.Include(x => x.Tabela);
+            if (id > 0)
             {
-                var campo = _dbContext.Campos.Include(x => x.Tabela).First(x => x.Id == id);
-                var campos = new List<Campo> { campo };
-                return campos;
+                var campo = campos.First(x => x.Id == id);
+                var camposFilter = new List<Campo> { campo };
+                return camposFilter;
             }
-            return _dbContext.Campos.Include(x => x.Tabela);
+            return campos;
         }
 
         public void Salvar(Campo entity)
@@ -41,7 +47,7 @@ namespace AgendaContatos.Dominio.Applications
             else
             {
                 var tabela = new TabelaApplication();
-                entity.Tabela = tabela.Listar().FirstOrDefault();
+                entity.Tabela = tabela.Listar(entity.Tabela.Id).FirstOrDefault();
                 _dbContext.Campos.Add(entity);
             }
             _dbContext.SaveChanges();

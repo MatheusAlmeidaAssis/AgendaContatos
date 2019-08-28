@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AgendaContatos.Dominio.Class;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace AgendaContatos.Dominio.Models
@@ -30,7 +31,33 @@ namespace AgendaContatos.Dominio.Models
         public ICollection<Evento> Eventos { get; set; }
         public ICollection<Contato> Relacionamentos { get; set; }
         public ICollection<Tipo> Tipos { get; set; }
-        public ICollection<Grupo> Grupos { get; set; }        
+        public ICollection<Grupo> Grupos { get; set; }
         public virtual ICollection<Contato> ContatoRelacionamentos { get; set; }
+        public ContatoView ToContatoView()
+        {
+            var ContatoView = new ContatoView()
+            {
+                Id = Id,
+                Nome = Nome,
+                FoneticaSobrenome = FoneticaSobrenome,
+                PronunciaNomeMeio = PronunciaNomeMeio,
+                PronunciaNome = PronunciaNome,
+                Foto = Utils.EncodeImage(Foto),
+                Empresa = Empresa,
+                Cargo = Cargo,
+                Telefones = Telefones,
+                Emails = Emails,
+                Enderecos = Enderecos,
+                Observacao = Observacao,
+                Apelido = Apelido,
+                Website = Website,
+                ChamadaInternet = ChamadaInternet,
+                Eventos = Eventos,
+                Relacionamentos = Relacionamentos,
+                Tipos = Tipos,
+                Grupos = Grupos
+            };
+            return ContatoView;
+        }
     }
 }

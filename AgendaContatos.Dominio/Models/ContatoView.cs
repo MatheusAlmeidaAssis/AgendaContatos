@@ -1,16 +1,13 @@
-﻿using System;
+﻿using AgendaContatos.Dominio.Class;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace AgendaContatos.Dominio.Models
 {
     public class ContatoView
-    {
+    {       
         public int Id { get; set; }
         [Required(ErrorMessage = "Campo Obrigatorio")]
         public string Nome { get; set; }
@@ -41,5 +38,31 @@ namespace AgendaContatos.Dominio.Models
         public ICollection<Contato> Relacionamentos { get; set; }
         public ICollection<Tipo> Tipos { get; set; }
         public ICollection<Grupo> Grupos { get; set; }
+        public Contato ToContato()
+        {
+            var contato = new Contato()
+            {
+                Id = Id,
+                Nome = Nome,
+                FoneticaSobrenome = FoneticaSobrenome,
+                PronunciaNomeMeio = PronunciaNomeMeio,
+                PronunciaNome = PronunciaNome,               
+                Foto = Utils.DecodeImage(FotoUpload.InputStream),
+                Empresa = Empresa,
+                Cargo = Cargo,
+                Telefones = Telefones,
+                Emails = Emails,
+                Enderecos = Enderecos,
+                Observacao = Observacao,
+                Apelido = Apelido,
+                Website = Website,
+                ChamadaInternet = ChamadaInternet,
+                Eventos = Eventos,
+                Relacionamentos = Relacionamentos,
+                Tipos = Tipos,
+                Grupos = Grupos
+            };
+            return contato;
+        }
     }
 }
